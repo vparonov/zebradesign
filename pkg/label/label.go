@@ -1,28 +1,48 @@
 package label
 
+import (
+	"encoding/json"
+	"errors"
+)
+
 type PageSettings struct {
-	Width     float64 `json:"width"`
-	Height    float64 `json:"height"`
-	DPI       float64 `json:"dpi"`
-	Direction int     `json:"direction"`
+	Width     float64
+	Height    float64
+	DPI       float64
+	Direction int
+}
+
+type CellInterface interface {
+	ToZPL() string
 }
 
 type Cell struct {
-	ID    string  `json:"id"`
-	X     float64 `json:"x"`
-	Y     float64 `json:"y"`
-	Lines int     `json:"lines"`
-	Text  string  `json:"text"`
-	Size  float64 `json:"size"`
-	Font  string  `json:"font"`
-	BL    bool    `json:"bl"`
-	BR    bool    `json:"br"`
-	BT    bool    `json:"bt"`
-	BB    bool    `json:"bb"`
+	Type string
+	ID   string
+	X    float64
+	Y    float64
+	Size float64
+	BL   bool
+	BR   bool
+	BT   bool
+	BB   bool
+}
+
+type TextCell struct {
+	Cell
+	Lines int
+	Text  string
+	Font  string
+}
+
+type BarcodeCell struct {
+	Cell
+	BarcodeType string
 }
 
 type Label struct {
-	Cells []Cell
+	Cells    []CellInterface   `json:"-"`
+	RawCells []json.RawMessage `json:"Cells"`
 }
 
 const (
@@ -36,8 +56,49 @@ const (
 ^XZ'`
 )
 
-func (l *Label) RenderToTemplate() string {
+func (l *Label) UnmarshalJSON(data []byte) error {
+	type label Label
+
+	err := json.Unmarshal(data, (*label)(l))
+	if err != nil {
+		return err
+	}
+
+	for _, raw := range l.RawCells {
+		var c Cell
+		err = json.Unmarshal(raw, &c)
+		if err != nil {
+			return err
+		}
+		var i CellInterface
+		switch c.Type {
+		case "text":
+			i = &TextCell{}
+		case "barcode":
+			i = &BarcodeCell{}
+		default:
+			return errors.New("unknown cell type")
+		}
+		err = json.Unmarshal(raw, i)
+		if err != nil {
+			return err
+		}
+		l.Cells = append(l.Cells, i)
+	}
+	return nil
+}
+
+func (l *Label) RenderToPage(pageSettings *PageSettings) string {
+
 	return ""
+}
+
+func (c *TextCell) ToZPL() string {
+	return "text"
+}
+
+func (c *BarcodeCell) ToZPL() string {
+	return "barcode"
 }
 
 func (p *PageSettings) mmToPoint(mm float64) int {
