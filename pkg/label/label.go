@@ -5,41 +5,6 @@ import (
 	"errors"
 )
 
-type PageSettings struct {
-	Width     float64
-	Height    float64
-	DPI       float64
-	Direction int
-}
-
-type CellInterface interface {
-	ToZPL() string
-}
-
-type Cell struct {
-	Type string
-	ID   string
-	X    float64
-	Y    float64
-	Size float64
-	BL   bool
-	BR   bool
-	BT   bool
-	BB   bool
-}
-
-type TextCell struct {
-	Cell
-	Lines int
-	Text  string
-	Font  string
-}
-
-type BarcodeCell struct {
-	Cell
-	BarcodeType string
-}
-
 type Label struct {
 	Cells    []CellInterface   `json:"-"`
 	RawCells []json.RawMessage `json:"Cells"`
@@ -88,46 +53,7 @@ func (l *Label) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (l *Label) RenderToPage(pageSettings *PageSettings) string {
+func (l *Label) RenderToPage(p *PageSettings) string {
 
 	return ""
-}
-
-func (c *TextCell) ToZPL() string {
-	return "text"
-}
-
-func (c *BarcodeCell) ToZPL() string {
-	return "barcode"
-}
-
-func (p *PageSettings) mmToPoint(mm float64) int {
-	return int(p.DPI * mm / 25.4)
-}
-
-func (p *PageSettings) toPageCoordinates(x, y float64) (xPage int, yPage int) {
-	var xPageMM float64
-	var yPageMM float64
-
-	switch p.Direction {
-	case 0:
-		xPageMM = x
-		yPageMM = y
-	case 90:
-		xPageMM = y
-		yPageMM = x
-	case 180:
-		xPageMM = p.Width - x
-		yPageMM = p.Height - y
-	case 270:
-		xPageMM = y
-		yPageMM = p.Width - x
-	default:
-		panic("Invalid direction")
-	}
-
-	xPage = p.mmToPoint(xPageMM)
-	yPage = p.mmToPoint(yPageMM)
-
-	return
 }

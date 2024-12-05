@@ -12,7 +12,7 @@ func TestMMtoPoint(t *testing.T) {
 
 	points := p.mmToPoint(10)
 
-	assert.Equal(t, 79, points)
+	assert.Equal(t, 80, points)
 
 	xp, yp := p.toPageCoordinates(0, 0)
 
@@ -66,19 +66,39 @@ func TestDemarshalCells(t *testing.T) {
 }
 
 func TestDemarchalLabel(t *testing.T) {
-	labelJSON := `{"Cells":[{
-	    "Type": "text", 
-        "ID": "cell1",
-        "X": 10,"Y": 20,"Text": "Hello, World!","Font": "","Lines": 1,"Size": 10}]}
-`
+	p := &PageSettings{DPI: 203, Direction: 270, Width: 150, Height: 100}
+
+	labelJSON := `{
+		"Cells":[
+			{
+	    		"Type": "text", 
+        		"ID": "cell1",
+        		"X": 10,"Y": 20,
+				"Text": "Hello, World!",
+				"Font": "","Lines": 1,
+				"Size": 10
+			},
+			{
+	    		"Type": "barcode", 
+        		"ID": "cell1",
+        		"X": 10,"Y": 20,
+				"BarcodeType": "Code128",
+				"Size": 10
+			}
+		]
+}`
 
 	var label Label
 	err := label.UnmarshalJSON([]byte(labelJSON))
 
 	assert.Nil(t, err)
 
-	for _, cell := range label.Cells {
-		zpl := cell.ToZPL()
-		assert.Equal(t, "text", zpl)
-	}
+	cell := label.Cells[0]
+	zpl := cell.ToZPL(p)
+	assert.Equal(t, "text", zpl)
+
+	cell = label.Cells[1]
+	zpl = cell.ToZPL(p)
+	assert.Equal(t, "barcode", zpl)
+
 }
