@@ -10,6 +10,15 @@ type TextLabel struct {
 	Font  string
 }
 
+func NewTextLabel() *TextLabel {
+	return &TextLabel{
+		Lines: 1,
+		Size:  10,
+		Text:  "",
+		Font:  "",
+	}
+}
+
 func (c *TextLabel) ToZPL(p *PageSettings, b *zpl.ZplBuilder) *zpl.ZplBuilder {
 	b.RawCode("label")
 	return b

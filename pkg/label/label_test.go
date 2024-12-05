@@ -38,11 +38,7 @@ func TestDemarshalCells(t *testing.T) {
 	"X": 10,
     "Y": 20,
     "Size": 10,
-    "BL": true,
-    "BR": true,
-    "BT": true,
-    "BB": true,
-	"Lines": 1,
+ 	"Lines": 1,
 	"Text": "Hello, World!",
     "Font": ""
 }
@@ -57,10 +53,6 @@ func TestDemarshalCells(t *testing.T) {
 	assert.Equal(t, float64(10), cell.X)
 	assert.Equal(t, float64(20), cell.Y)
 	assert.Equal(t, float64(10), cell.Size)
-	assert.True(t, cell.BL)
-	assert.True(t, cell.BR)
-	assert.True(t, cell.BT)
-	assert.True(t, cell.BB)
 	assert.Equal(t, 1, cell.Lines)
 	assert.Equal(t, "", cell.Font)
 

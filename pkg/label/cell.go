@@ -11,8 +11,4 @@ type Cell struct {
 	ID   string
 	X    float64
 	Y    float64
-	BL   bool
-	BR   bool
-	BT   bool
-	BB   bool
 }

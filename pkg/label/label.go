@@ -41,13 +41,13 @@ func (l *Label) UnmarshalJSON(data []byte) error {
 		var i CellInterface
 		switch c.Type {
 		case "text":
-			i = &TextCell{}
+			i = NewTextCell()
 		case "barcode":
-			i = &BarcodeCell{}
+			i = NewBarcodeCell()
 		case "label":
-			i = &TextLabel{}
+			i = NewTextLabel()
 		case "box":
-			i = &BoxCell{}
+			i = NewBoxCell()
 		default:
 			return errors.New("unknown cell type")
 		}
