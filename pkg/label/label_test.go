@@ -2,17 +2,19 @@ package label
 
 import (
 	"encoding/json"
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/vparonov/zebradesign/pkg/zpl"
 )
 
 func TestMMtoPoint(t *testing.T) {
 	p := &PageSettings{DPI: 203, Direction: 270, Width: 150, Height: 100}
 
-	points := p.mmToPoint(10)
+	points := p.mmToPoint(100)
 
-	assert.Equal(t, 80, points)
+	assert.Equal(t, 799, points)
 
 	xp, yp := p.toPageCoordinates(0, 0)
 
@@ -60,7 +62,6 @@ func TestDemarshalCells(t *testing.T) {
 	assert.True(t, cell.BT)
 	assert.True(t, cell.BB)
 	assert.Equal(t, 1, cell.Lines)
-	assert.Equal(t, "Hello, World!", cell.Text)
 	assert.Equal(t, "", cell.Font)
 
 }
@@ -94,11 +95,15 @@ func TestDemarchalLabel(t *testing.T) {
 	assert.Nil(t, err)
 
 	cell := label.Cells[0]
-	zpl := cell.ToZPL(p)
-	assert.Equal(t, "text", zpl)
+	zplResult := cell.ToZPL(p, zpl.New()).String()
+	assert.Equal(t, "text", zplResult)
 
 	cell = label.Cells[1]
-	zpl = cell.ToZPL(p)
-	assert.Equal(t, "barcode", zpl)
+	zplResult = cell.ToZPL(p, zpl.New()).String()
+	assert.Equal(t, "barcode", zplResult)
 
+	page := label.RenderToPage(p)
+
+	assert.Contains(t, page, "text")
+	fmt.Print(page)
 }

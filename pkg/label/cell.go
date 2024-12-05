@@ -1,7 +1,9 @@
 package label
 
+import "github.com/vparonov/zebradesign/pkg/zpl"
+
 type CellInterface interface {
-	ToZPL(p *PageSettings) string
+	ToZPL(p *PageSettings, b *zpl.ZplBuilder) *zpl.ZplBuilder
 }
 
 type Cell struct {
@@ -9,7 +11,6 @@ type Cell struct {
 	ID   string
 	X    float64
 	Y    float64
-	Size float64
 	BL   bool
 	BR   bool
 	BT   bool
