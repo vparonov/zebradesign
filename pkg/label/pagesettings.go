@@ -9,7 +9,7 @@ type PageSettings struct {
 	Direction int
 }
 
-func (p *PageSettings) mmToPoint(mm float64) int {
+func (p *PageSettings) mmToPoints(mm float64) int {
 	return int(math.Round(p.DPI * mm / 25.4))
 }
 
@@ -34,8 +34,8 @@ func (p *PageSettings) toPageCoordinates(x, y float64) (xPage int, yPage int) {
 		panic("Invalid direction")
 	}
 
-	xPage = p.mmToPoint(xPageMM)
-	yPage = p.mmToPoint(yPageMM)
+	xPage = p.mmToPoints(xPageMM)
+	yPage = p.mmToPoints(yPageMM)
 
 	return
 }

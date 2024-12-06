@@ -44,8 +44,6 @@ func (l *Label) UnmarshalJSON(data []byte) error {
 			i = NewTextCell()
 		case "barcode":
 			i = NewBarcodeCell()
-		case "label":
-			i = NewTextLabel()
 		case "box":
 			i = NewBoxCell()
 		default:
@@ -66,12 +64,12 @@ func (l *Label) RenderToPage(p *PageSettings) string {
 	zplBuilder.RawCode(PROLOG_ZPL)
 
 	if p.Direction == 90 || p.Direction == 270 {
-		zplBuilder.PrintWidth(p.mmToPoint(p.Height)).
-			PrintLength(p.mmToPoint(p.Width)).
+		zplBuilder.PrintWidth(p.mmToPoints(p.Height)).
+			PrintLength(p.mmToPoints(p.Width)).
 			NewLine()
 	} else {
-		zplBuilder.PrintWidth(p.mmToPoint(p.Width)).
-			PrintLength(p.mmToPoint(p.Height)).
+		zplBuilder.PrintWidth(p.mmToPoints(p.Width)).
+			PrintLength(p.mmToPoints(p.Height)).
 			NewLine()
 	}
 

@@ -45,6 +45,13 @@ func (b *ZplBuilder) GraphicBox(width, height, borderWidth int, lineColor bool, 
 	return b
 }
 
+func (b *ZplBuilder) FieldBlock(width int,
+	lines int, spaceBetweenLines int,
+	textJustification rune, hangingIndent int) *ZplBuilder {
+
+	b.sb.WriteString(fmt.Sprintf("^FB%d,%d,%d,%c,%d", width, lines, spaceBetweenLines, textJustification, hangingIndent))
+	return b
+}
 func (b *ZplBuilder) BarCodeFieldDefault(w int, r float64, h int) *ZplBuilder {
 	b.sb.WriteString(fmt.Sprintf("^BY%d,%1.1f,%d", w, r, h))
 	return b
