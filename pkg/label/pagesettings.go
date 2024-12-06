@@ -9,6 +9,15 @@ type PageSettings struct {
 	Direction int
 }
 
+func NewPageSettings(width, height, dpi float64, direction int) *PageSettings {
+	return &PageSettings{
+		Width:     width,
+		Height:    height,
+		DPI:       dpi,
+		Direction: direction,
+	}
+}
+
 func (p *PageSettings) mmToPoints(mm float64) int {
 	return int(math.Round(p.DPI * mm / 25.4))
 }

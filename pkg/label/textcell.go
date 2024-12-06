@@ -9,7 +9,7 @@ type TextCell struct {
 	Size              float64
 	Width             float64
 	Font              string
-	TextJustification rune
+	TextJustification string
 }
 
 func NewTextCell() *TextCell {
@@ -17,7 +17,7 @@ func NewTextCell() *TextCell {
 		Lines:             1,
 		Size:              10,
 		Width:             100,
-		TextJustification: 'L',
+		TextJustification: "L",
 		Font:              "",
 		Text:              "",
 	}
@@ -50,7 +50,7 @@ func (c *TextCell) ToZPL(p *PageSettings, b *zpl.ZplBuilder) *zpl.ZplBuilder {
 		value = toTemplate(c.ID)
 	}
 
-	b.FieldBlock(p.mmToPoints(c.Width), c.Lines, 0, c.TextJustification, 0).
+	b.FieldBlock(p.mmToPoints(c.Width), c.Lines, 0, rune(c.TextJustification[0]), 0).
 		FieldHexadecimalIndicator('\\').
 		CyrCharset().
 		FieldData(value).

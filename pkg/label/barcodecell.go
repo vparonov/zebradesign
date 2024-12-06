@@ -4,8 +4,9 @@ import "github.com/vparonov/zebradesign/pkg/zpl"
 
 type BarcodeCell struct {
 	Cell
+	Text                    string
 	BarcodeType             string
-	ModuleWidth             float64 // mm
+	ModuleWidth             int     // points
 	WToNRatio               float64 // default = 3.0
 	Height                  float64 // mm
 	Direction               string  // 'N', 'R', 'I', 'B'
@@ -16,7 +17,8 @@ type BarcodeCell struct {
 func NewBarcodeCell() *BarcodeCell {
 	return &BarcodeCell{
 		BarcodeType:             "Code128",
-		ModuleWidth:             0.375,
+		Text:                    "", //if not provided, the ID will be used as template field (i.e. {{ <<id>> }})
+		ModuleWidth:             2,
 		WToNRatio:               3.0,
 		Direction:               "", // 'N', 'R', 'I', 'B'. '' == default direction for the page settings
 		InterpretationLine:      false,
@@ -41,10 +43,18 @@ func (c *BarcodeCell) ToZPL(p *PageSettings, b *zpl.ZplBuilder) *zpl.ZplBuilder 
 	if direction == 'B' {
 		xpage += height
 	}
+
+	var value string
+
+	if len(c.Text) > 0 {
+		value = c.Text
+	} else {
+		value = toTemplate(c.ID)
+	}
 	// ^BY3,3,118^FT162,1160^BCB,,N,N^FD{{ barcode }}^FS
-	b.BarCodeFieldDefault(p.mmToPoints(c.ModuleWidth), c.WToNRatio, height).
+	b.BarCodeFieldDefault(c.ModuleWidth, c.WToNRatio, height).
 		FieldTypeset(xpage, ypage).
-		Code128BarCode(direction, p.mmToPoints(c.Height), c.InterpretationLine, c.InterpretationLineAbove, false, 'N').
-		FieldData(toTemplate(c.ID)).FieldSeparator().NewLine()
+		Code128BarCode(direction, height, c.InterpretationLine, c.InterpretationLineAbove, false, 'N').
+		FieldData(value).FieldSeparator().NewLine()
 	return b
 }

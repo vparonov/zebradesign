@@ -21,7 +21,7 @@ const (
 ^MMT
 `
 	EPILOG_ZPL = `^PQ1,0,1,Y
-^XZ'`
+^XZ`
 )
 
 func (l *Label) UnmarshalJSON(data []byte) error {

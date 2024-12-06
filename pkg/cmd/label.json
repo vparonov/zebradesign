@@ -1,0 +1,76 @@
+{
+    "Cells":[
+        {
+            "Type": "box", 
+            "X": 3,"Y": 3,
+            "Width": 144, "Height": 94
+        },    
+
+        
+        {
+            "Type": "box", 
+            "X": 18,"Y": 3,
+            "Width": 55, "Height": 10
+        },
+        {
+            "Type": "box", 
+            "X": 73,"Y": 3,
+            "Width": 74, "Height": 10
+        },
+
+
+        {
+            "Type": "box", 
+            "X": 18,"Y": 87,
+            "Width": 27.5, "Height": 10
+        },
+        {
+            "Type": "box", 
+            "X": 45.5,"Y": 87,
+            "Width": 27.5, "Height": 10
+        },
+        {
+            "Type": "box", 
+            "X": 73,"Y": 87,
+            "Width": 71, "Height": 10
+        },
+
+        {
+            "Type": "barcode", 
+            "ID": "cell33",
+            "X": 4,"Y": 8,
+            "Text":"A0100146933340004",
+            "ModuleWidth": 3, 
+            "Direction": "N",
+            "BarcodeType": "Code128",
+            "Height": 13
+        }, 
+
+
+        {
+            "ID": "pack",
+            "Type": "text", 
+            "X": 18,"Y": 3,
+            "Width": 55, "Height": 10,
+            "Text":"==Кашон==",
+            "Size": 6,
+            "TextJustification": "C", 
+            "Font": "{{ font }}",
+            "Lines": 1
+        },
+        {
+            "ID": "id",
+            "Type": "text", 
+            "X": 73,"Y": 3,
+            "Width": 70, "Height": 10,
+            "Text":"14967363",
+            "Size": 6,
+            "TextJustification": "C", 
+            "Font": "{{ font }}",
+            "Lines": 1
+        }
+
+
+
+    ]
+}
