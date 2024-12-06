@@ -31,6 +31,7 @@ func (c *BarcodeCell) ToZPL(p *PageSettings, b *zpl.ZplBuilder) *zpl.ZplBuilder 
 	if c.BarcodeType != "Code128" {
 		panic("Unsupported barcode type")
 	}
+
 	height := p.mmToPoints(c.Height)
 	xpage, ypage := p.toPageCoordinates(c.X, c.Y)
 	var direction rune

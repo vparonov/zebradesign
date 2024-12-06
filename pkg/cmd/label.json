@@ -32,7 +32,7 @@
         {
             "Type": "box", 
             "X": 73,"Y": 87,
-            "Width": 71, "Height": 10
+            "Width": 74, "Height": 10
         },
 
         {
@@ -40,6 +40,7 @@
             "ID": "cell33",
             "X": 4,"Y": 8,
             "Text":"A0100146933340004",
+            "InterpretationLine": true, 
             "ModuleWidth": 3, 
             "Direction": "N",
             "BarcodeType": "Code128",
@@ -62,15 +63,153 @@
             "ID": "id",
             "Type": "text", 
             "X": 73,"Y": 3,
-            "Width": 70, "Height": 10,
+            "Width": 70, 
             "Text":"14967363",
             "Size": 6,
             "TextJustification": "C", 
             "Font": "{{ font }}",
             "Lines": 1
+        },
+
+
+        {
+            "ID": "client_name",
+            "Type": "text", 
+            "X": 20,"Y": 15,
+            "Width": 130, 
+            "Text":"МНОГО ДЪЛЪГ ТЕКСТ И ДРУГИ ПОДОБНИ ГЛУПОСТИ И ПРОСТОТИИ",
+            "Size": 6,
+            "TextJustification": "L", 
+            "Font": "{{ font }}",
+            "Lines": 3
+        },
+
+  
+        {
+            "ID": "invoices_label",
+            "Type": "text", 
+            "X": 20,"Y": 35,
+            "Width": 20, 
+            "Text":"Фактури:",
+            "Size": 4,
+            "TextJustification": "L", 
+            "Font": "{{ font }}",
+            "Lines": 3
+        },
+        {
+            "ID": "invoices",
+            "Type": "text", 
+            "X": 37,"Y": 35,
+            "Width": 105, 
+            "Text":"0123456789, 0123456789, 0123456789, 0123456789, 0123456789, 0123456789, 0123456789, 0123456789, 0123456789, 0123456789, 0123456789",
+            "Size": 4,
+            "TextJustification": "L", 
+            "Font": "{{ font }}",
+            "Lines": 3
+        }, 
+
+
+         {
+            "ID": "city_label",
+            "Type": "text", 
+            "X": 20,"Y": 50,
+            "Width": 20, 
+            "Text":"Град:",
+            "Size": 4,
+            "TextJustification": "L", 
+            "Font": "{{ font }}",
+            "Lines": 3
+        },
+        {
+            "ID": "city",
+            "Type": "text", 
+            "X": 37,"Y": 48,
+            "Width": 105, 
+            "Text":"Град София Баба Яга",
+            "Size": 6,
+            "TextJustification": "L", 
+            "Font": "{{ font }}",
+            "Lines": 1
+        }, 
+
+        {
+            "ID": "address_label",
+            "Type": "text", 
+            "X": 20,"Y": 60,
+            "Width": 20, 
+            "Text":"Адрес:",
+            "Size": 4,
+            "TextJustification": "L", 
+            "Font": "{{ font }}",
+            "Lines": 2
+        },
+        {
+            "ID": "address",
+            "Type": "text", 
+            "X": 37,"Y": 60,
+            "Width": 105, 
+            "Text":"Град София Баба Яга",
+            "Size": 4,
+            "TextJustification": "L", 
+            "Font": "{{ font }}",
+            "Lines": 2
+        },
+
+        {
+            "ID": "note_label",
+            "Type": "text", 
+            "X": 20,"Y": 76,
+            "Width": 20, 
+            "Text":"Бележка:",
+            "Size": 4,
+            "TextJustification": "L", 
+            "Font": "{{ font }}",
+            "Lines": 2
+        },
+        {
+            "ID": "note",
+            "Type": "text", 
+            "X": 37,"Y": 72,
+            "Width": 105, 
+            "Text":"НЕ СЕ КАРА!",
+            "Size": 8,
+            "TextJustification": "L", 
+            "Font": "{{ font }}",
+            "Lines": 2
+        },
+
+        {
+            "ID": "route_time",
+            "Type": "text", 
+            "X": 18,"Y": 87,
+            "Width": 27, 
+            "Text":"22:44",
+            "Size": 8,
+            "TextJustification": "C", 
+            "Font": "{{ font }}",
+            "Lines": 1
+        },
+        {
+            "ID": "route_date",
+            "Type": "text", 
+            "X": 45.5,"Y": 88,
+            "Width": 27, 
+            "Text":"12/12/2022",
+            "Size": 6,
+            "TextJustification": "C", 
+            "Font": "{{ font }}",
+            "Lines": 1
+        }, 
+        {
+            "ID": "route",
+            "Type": "text", 
+            "X": 74,"Y": 88,
+            "Width": 73, 
+            "Text":"МАРШРЧУТ 12,3 ",
+            "Size": 6,
+            "TextJustification": "L", 
+            "Font": "{{ font }}",
+            "Lines": 1
         }
-
-
-
     ]
 }
