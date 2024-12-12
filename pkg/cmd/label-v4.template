@@ -1,0 +1,31 @@
+CT~~CD,~CC^~CT~
+^XA
+~TA000~JSN^LT0^MNW^MTT^PON^PMN^LH0,0^JMA^PR8,8~SD15^JUS^LRN^CI0
+^XZ
+^XA
+^MMT
+^PW799^LL1199
+^FO24,24^GB751,1151,2,B,0^FS
+^BY3,3.0,104^FT64,1167^BCN,104,Y,N,N,N^FD{{ barcode }}^FS
+^FO24,615^GB80,440,2,B,0^FS
+^FT72,1055^A@B,48,48,{{ font_name }}^FB440,1,0,C,0^FH\^CI17^F8^FD{{ pack }}^FS^CI0
+^FT104,1055^A@B,32,32,{{ font_name }}^FB440,1,0,C,0^FH\^CI17^F8^FD{{ thermo }}^FS^CI0
+^FO24,24^GB80,591,2,B,0^FS
+^FT72,615^A@B,48,48,{{ font_name }}^FB559,1,0,C,0^FH\^CI17^F8^FD{{ id }}^FS^CI0
+^FT264,1039^A@B,48,48,{{ font_name }}^FB1039,3,0,L,0^FH\^CI17^F8^FD{{ client_name }}^FS^CI0
+^FT376,1039^A@B,32,32,{{ font_name }}^FB160,3,0,L,0^FH\^CI17^F8^FDФактури:^FS^CI0
+^FT364,903^A@B,28,28,{{ font_name }}^FB839,3,0,L,0^FH\^CI17^F8^FD{{ invoices }}^FS^CI0
+^FT496,1039^A@B,32,32,{{ font_name }}^FB160,3,0,L,0^FH\^CI17^F8^FDГрад:^FS^CI0
+^FT480,903^A@B,48,48,{{ font_name }}^FB839,2,0,L,0^FH\^CI17^F8^FD{{ city }}^FS^CI0
+^FT544,1039^A@B,32,32,{{ font_name }}^FB160,2,0,L,0^FH\^CI17^F8^FDАдрес:^FS^CI0
+^FT544,903^A@B,32,32,{{ font_name }}^FB839,2,0,L,0^FH\^CI17^F8^FD{{ address }}^FS^CI0
+^FT671,1039^A@B,32,32,{{ font_name }}^FB160,2,0,L,0^FH\^CI17^F8^FDБележка:^FS^CI0
+^FT703,903^A@B,64,64,{{ font_name }}^FB839,2,0,L,0^FH\^CI17^F8^FD{{ note }}^FS^CI0
+^FO695,851^GB80,204,2,B,0^FS
+^FT743,1055^A@B,40,40,{{ font_name }}^FB200,1,0,C,0^FH\^CI17^F8^FD{{ route_time }}^FS^CI0
+^FO695,631^GB80,220,2,B,0^FS
+^FT743,851^A@B,40,40,{{ font_name }}^FB216,1,0,C,0^FH\^CI17^F8^FD{{ route_date }}^FS^CI0
+^FO695,24^GB80,611,2,B,0^FS
+^FT767,627^A@B,32,32,{{ font_name }}^FB611,2,0,L,0^FH\^CI17^F8^FD{{ route_name }}^FS^CI0
+^PQ1,0,1,Y
+^XZ

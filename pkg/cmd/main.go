@@ -15,6 +15,7 @@ func main() {
 	pageHeight := flag.Float64("h", 100.0, "Page width [mm] (default: 100)")
 	pageDPI := flag.Float64("d", 203.0, "DPI (default: 203)")
 	pageDirection := flag.Int("o", 270, "Page orientation (default: 270)")
+	demo := flag.Bool("demo", false, "Generate demo label (default: false)")
 
 	flag.Parse()
 
@@ -44,6 +45,6 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Print(label.RenderToPage(pageSettings))
+	fmt.Print(label.RenderToPage(pageSettings, *demo))
 
 }

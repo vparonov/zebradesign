@@ -3,7 +3,7 @@ package label
 import "github.com/vparonov/zebradesign/pkg/zpl"
 
 type CellInterface interface {
-	ToZPL(p *PageSettings, b *zpl.ZplBuilder) *zpl.ZplBuilder
+	ToZPL(p *PageSettings, b *zpl.ZplBuilder, demoMode bool) *zpl.ZplBuilder
 }
 
 type Cell struct {

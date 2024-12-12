@@ -25,7 +25,7 @@ func NewBoxCell() *BoxCell {
 	}
 }
 
-func (c *BoxCell) ToZPL(p *PageSettings, b *zpl.ZplBuilder) *zpl.ZplBuilder {
+func (c *BoxCell) ToZPL(p *PageSettings, b *zpl.ZplBuilder, _ bool) *zpl.ZplBuilder {
 	if !(c.BL && c.BR && c.BT && c.BB) {
 		panic("Box cell must have all sides set to true")
 	}

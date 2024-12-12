@@ -42,6 +42,9 @@ func (l *Label) UnmarshalJSON(data []byte) error {
 		switch c.Type {
 		case "text":
 			i = NewTextCell()
+		// the label is a text cell with text property set
+		case "label":
+			i = NewTextCell()
 		case "barcode":
 			i = NewBarcodeCell()
 		case "box":
@@ -58,7 +61,7 @@ func (l *Label) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-func (l *Label) RenderToPage(p *PageSettings) string {
+func (l *Label) RenderToPage(p *PageSettings, demoMode bool) string {
 	zplBuilder := zpl.New()
 
 	zplBuilder.RawCode(PROLOG_ZPL)
@@ -74,7 +77,7 @@ func (l *Label) RenderToPage(p *PageSettings) string {
 	}
 
 	for _, c := range l.Cells {
-		c.ToZPL(p, zplBuilder)
+		c.ToZPL(p, zplBuilder, demoMode)
 	}
 	zplBuilder.RawCode(EPILOG_ZPL)
 	return zplBuilder.String()

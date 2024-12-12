@@ -23,7 +23,7 @@ func NewTextCell() *TextCell {
 	}
 }
 
-func (c *TextCell) ToZPL(p *PageSettings, b *zpl.ZplBuilder) *zpl.ZplBuilder {
+func (c *TextCell) ToZPL(p *PageSettings, b *zpl.ZplBuilder, demoMode bool) *zpl.ZplBuilder {
 	//^FT65,400^A@B,45,45,{{ font_name }}^FH\^CI17^F8^FD{{ pack }}^FS^CI0
 	totalHeight := c.Lines * p.mmToPoints(c.Size)
 
@@ -44,7 +44,7 @@ func (c *TextCell) ToZPL(p *PageSettings, b *zpl.ZplBuilder) *zpl.ZplBuilder {
 	}
 
 	var value string
-	if len(c.Text) > 0 {
+	if demoMode && c.Type == "text" || c.Type == "label" {
 		value = c.Text
 	} else {
 		value = toTemplate(c.ID)

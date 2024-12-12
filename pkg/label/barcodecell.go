@@ -27,7 +27,7 @@ func NewBarcodeCell() *BarcodeCell {
 	}
 }
 
-func (c *BarcodeCell) ToZPL(p *PageSettings, b *zpl.ZplBuilder) *zpl.ZplBuilder {
+func (c *BarcodeCell) ToZPL(p *PageSettings, b *zpl.ZplBuilder, demoMode bool) *zpl.ZplBuilder {
 	if c.BarcodeType != "Code128" {
 		panic("Unsupported barcode type")
 	}
@@ -47,7 +47,7 @@ func (c *BarcodeCell) ToZPL(p *PageSettings, b *zpl.ZplBuilder) *zpl.ZplBuilder 
 
 	var value string
 
-	if len(c.Text) > 0 {
+	if demoMode {
 		value = c.Text
 	} else {
 		value = toTemplate(c.ID)

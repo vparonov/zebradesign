@@ -110,14 +110,14 @@ func TestDemarchalLabel(t *testing.T) {
 	assert.Nil(t, err)
 
 	cell := label.Cells[0]
-	zplResult := cell.ToZPL(p, zpl.New()).String()
+	zplResult := cell.ToZPL(p, zpl.New(), false).String()
 	assert.NotEmpty(t, zplResult)
 
 	cell = label.Cells[1]
-	zplResult = cell.ToZPL(p, zpl.New()).String()
+	zplResult = cell.ToZPL(p, zpl.New(), false).String()
 	assert.NotEmpty(t, zplResult)
 
-	page := label.RenderToPage(p)
+	page := label.RenderToPage(p, true)
 
 	assert.NotEmpty(t, page)
 	fmt.Print(page)
