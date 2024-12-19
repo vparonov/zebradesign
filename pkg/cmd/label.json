@@ -19,7 +19,7 @@
 {"ID": "bottom_fld_l","Type": "box",     "X": 18,  "Y": 87, "Width": 25.5,"Height": 10},
 {"ID": "route_time",  "Type": "text",    "X": 18,  "Y": 88, "Width": 25,  "Text":"23:00","Size": 5,"TextJustification": "C", "Font": "{{ font_name }}","Lines": 1},
 {"ID": "bottom_fld_c","Type": "box",     "X": 43.5,"Y": 87, "Width": 27.5,"Height": 10},
-{"ID": "route_date",  "Type": "text",    "X": 43.5,"Y": 88, "Width": 27,  "Text":"12/12/2022","Size": 5,"TextJustification": "C", "Font": "{{ font_name }}","Lines": 1}, 
+{"ID": "route_date",  "Type": "text",    "X": 43.5,"Y": 88, "Width": 27,  "Text":"12/12/2022","Size": 4,"TextJustification": "C", "Font": "{{ font_name }}","Lines": 1}, 
 {"ID": "bottom_fld_r","Type": "box",     "X": 70.5,  "Y": 87, "Width": 76.5, "Height": 10},
 {"ID": "route_name",  "Type": "text",    "X": 71.5,  "Y": 88, "Width": 76.5,  "Text":"МАРШРЧУТ 12,3 ","Size": 4,"TextJustification": "L", "Font": "{{ font_name }}","Lines": 2}
 ]

@@ -24,7 +24,7 @@ CT~~CD,~CC^~CT~
 ^FO695,851^GB80,204,2,B,0^FS
 ^FT743,1055^A@B,40,40,{{ font_name }}^FB200,1,0,C,0^FH\^CI17^F8^FD{{ route_time }}^FS^CI0
 ^FO695,631^GB80,220,2,B,0^FS
-^FT743,851^A@B,40,40,{{ font_name }}^FB216,1,0,C,0^FH\^CI17^F8^FD{{ route_date }}^FS^CI0
+^FT735,851^A@B,32,32,{{ font_name }}^FB216,1,0,C,0^FH\^CI17^F8^FD{{ route_date }}^FS^CI0
 ^FO695,24^GB80,611,2,B,0^FS
 ^FT767,627^A@B,32,32,{{ font_name }}^FB611,2,0,L,0^FH\^CI17^F8^FD{{ route_name }}^FS^CI0
 ^PQ1,0,1,Y
